@@ -77,11 +77,11 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateTime, 60000);
 
     function cycleScreens() {
-        setTimeout(showMotivationScreen, 5000);
+        setTimeout(showMotivationScreen, 60000);
         setTimeout(() => {
             showOriginalScreen();
             cycleScreens(); // Повторяем цикл
-        }, 5000);
+        }, 90000);
     }
 
     cycleScreens();
