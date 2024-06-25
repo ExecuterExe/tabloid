@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             showOriginalScreen();
             cycleScreens(); // Повторяем цикл
-        }, 90000);
+        }, 80000);
     }
 
     cycleScreens();
