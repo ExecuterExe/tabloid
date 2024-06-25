@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateTime, 60000);
 
     function cycleScreens() {
-        setTimeout(showMotivationScreen, 10000);
+        setTimeout(showMotivationScreen, 5000);
         setTimeout(() => {
             showOriginalScreen();
             cycleScreens(); // Повторяем цикл
