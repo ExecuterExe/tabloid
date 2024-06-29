@@ -16,11 +16,42 @@ document.addEventListener('DOMContentLoaded', function () {
         "Жажда новых свершений - лучшее авиатопливо для карьерного взлета.",
         "Займите место в кабине авиалайнера карьеры и взмывайте ввысь!",
         "Садитесь за штурвал авиалайнера успеха и взлетайте!",
-        "Финуниверситет => Финансовая элита будущего"
     ];
+
+    const subjectStatusPairs = {
+        '22-СП-ЭК01': [
+            { subject: 'Философия', status: 'НЕДОПОНЯТА (пока)' },
+            { subject: 'Иностранный язык', status: 'Ожидается' },
+            { subject: 'Бухгалтерский учет', status: 'ПРИБЫЛ' },
+        ],
+        '20-1Б-ЭК01': [
+            { subject: 'Инвестиционный анализ', status: 'ПРИБЛИЖАЕТСЯ' },
+            { subject: 'Оценка имущества и бизнеса', status: 'Уточняется' },
+            { subject: 'Физическая культура и спорт', status: 'Вне очереди' },
+        ],
+        '20-1Б-МН01': [
+            { subject: 'Управление денежными потоками', status: 'ОТЛОЖЕНО' },
+            { subject: 'Методы принятия финансовых решений', status: 'ВОЗМОЖНО ОЖИДАЕТСЯ' },
+            { subject: 'Финансовый менеджмент', status: 'Посадка по расписанию' },
+        ]
+    };
 
     function getRandomPhrase() {
         return motivationalPhrases[Math.floor(Math.random() * motivationalPhrases.length)];
+    }
+    for (let group in subjectStatusPairs) {
+        subjectStatusPairs[group] = subjectStatusPairs[group].map(pair => ({
+            ...pair,
+            time: generateRandomTime()
+        }));
+    }
+
+    function generateRandomTime() {
+        const now = new Date();
+        const flightTime = new Date(now.getTime() + (2 * 60 + Math.floor(Math.random() * 60)) * 60 * 1000);
+        const flightHours = flightTime.getHours().toString().padStart(2, '0');
+        const flightMinutes = flightTime.getMinutes().toString().padStart(2, '0');
+        return `${flightHours}:${flightMinutes}`;
     }
 
     function updateTime() {
@@ -31,24 +62,32 @@ document.addEventListener('DOMContentLoaded', function () {
         timeElement.textContent = `${hours}:${minutes}`;
     }
 
-    function generateFlightTimes() {
-        const now = new Date();
-        const gridItems = document.querySelectorAll('.grid_tabloid .item.time_rais');
-        flightTimes = Array.from(gridItems).map(item => {
-            if (item.classList.contains('head_tablo')) return '';
+    function updateSubjectsAndStatuses() {
+        const rows = document.querySelectorAll('.grid_tabloid .item.group');
+        const usedSubjects = new Set();
 
-            const flightTime = new Date(now.getTime() + (2 * 60 + Math.floor(Math.random() * 60)) * 60 * 1000);
-            const flightHours = flightTime.getHours().toString().padStart(2, '0');
-            const flightMinutes = flightTime.getMinutes().toString().padStart(2, '0');
-            return `${flightHours}:${flightMinutes}`;
-        });
-    }
+        rows.forEach(row => {
+            const group = row.textContent;
+            const subjectElement = row.nextElementSibling;
+            const timeElement = subjectElement.nextElementSibling;
+            const statusElement = timeElement.nextElementSibling;
 
-    function displayFlightTimes() {
-        const gridItems = document.querySelectorAll('.grid_tabloid .item.time_rais');
-        gridItems.forEach((item, index) => {
-            if (!item.classList.contains('head_tablo')) {
-                item.textContent = flightTimes[index];
+            if (subjectStatusPairs[group]) {
+                let availablePairs = subjectStatusPairs[group].filter(pair => !usedSubjects.has(pair.subject));
+
+                if (availablePairs.length === 0) {
+                    usedSubjects.clear();
+                    availablePairs = subjectStatusPairs[group];
+                }
+
+                const randomIndex = Math.floor(Math.random() * availablePairs.length);
+                const randomPair = availablePairs[randomIndex];
+
+                subjectElement.textContent = randomPair.subject;
+                timeElement.textContent = randomPair.time;
+                statusElement.textContent = randomPair.status;
+
+                usedSubjects.add(randomPair.subject);
             }
         });
     }
@@ -65,16 +104,15 @@ document.addEventListener('DOMContentLoaded', function () {
     function showOriginalScreen() {
         wrapper.innerHTML = originalContent;
         updateTime();
-        displayFlightTimes();
+        updateSubjectsAndStatuses();
     }
 
     // Инициализация
     updateTime();
-    generateFlightTimes();
-    displayFlightTimes();
+    updateSubjectsAndStatuses();
 
-    // Обновлять время каждую минуту
-    setInterval(updateTime, 60000);
+    // Обновлять время каждую секунду
+    setInterval(updateTime, 1000);
 
     function cycleScreens() {
         setTimeout(showMotivationScreen, 60000);
