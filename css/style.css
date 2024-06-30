@@ -152,3 +152,97 @@ html {
         /* Фиксированный размер для очень больших экранов */
     }
 }
+
+/* Для экранов с небольшой высотой */
+@media (max-height: 800px) {
+    .up_part {
+        padding: 5px;
+    }
+
+    .up_time {
+        font-size: 24px;
+    }
+
+    .time {
+        font-size: 30px;
+    }
+
+    .time_text {
+        font-size: 16px;
+    }
+
+    .title {
+        font-size: 36px;
+        padding: 5px 0;
+    }
+
+    .head_tablo {
+        font-size: 24px;
+        padding: 5px;
+    }
+
+    .item {
+        font-size: 24px;
+        padding: 5px;
+    }
+
+    .grid_tabloid {
+        grid-template-rows: repeat(9, minmax(40px, auto));
+    }
+}
+
+/* Для экранов с небольшой шириной */
+@media (max-width: 1200px) {
+    .grid_tabloid {
+        grid-template-columns: 7vw 12vw 36vw 25vw 20vw;
+    }
+
+    .item {
+        font-size: 22px;
+        padding: 5px;
+    }
+
+    .head_tablo {
+        font-size: 22px;
+        padding: 5px;
+    }
+}
+
+/* Для экранов с небольшой высотой и шириной */
+@media (max-height: 800px) and (max-width: 1200px) {
+    .up_part {
+        padding: 3px;
+    }
+
+    .up_time {
+        font-size: 20px;
+    }
+
+    .time {
+        font-size: 26px;
+    }
+
+    .time_text {
+        font-size: 14px;
+    }
+
+    .title {
+        font-size: 32px;
+        padding: 3px 0;
+    }
+
+    .head_tablo {
+        font-size: 20px;
+        padding: 3px;
+    }
+
+    .item {
+        font-size: 20px;
+        padding: 3px;
+    }
+
+    .grid_tabloid {
+        grid-template-rows: repeat(9, minmax(35px, auto));
+        grid-template-columns: 7vw 12vw 36vw 25vw 20vw;
+    }
+}
