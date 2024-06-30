@@ -110,13 +110,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function adjustFontSize() {
+        const motivationText = document.querySelector('.motivation-text');
+        if (motivationText) {
+            let fontSize = parseInt(window.getComputedStyle(motivationText).fontSize);
+            while (motivationText.scrollHeight > motivationText.clientHeight && fontSize > 10) {
+                fontSize--;
+                motivationText.style.fontSize = fontSize + 'px';
+            }
+        }
+    }
+
     function showMotivationScreen() {
         const randomPhrase = getRandomPhrase();
         wrapper.innerHTML = `
             <div class="motivation-screen">
+                <img src="img/logo.svg" alt="Logo" class="motivation-logo">
                 <div class="motivation-text">${randomPhrase}</div>
             </div>
         `;
+        setTimeout(adjustFontSize, 0);
     }
 
     function showOriginalScreen() {
@@ -142,3 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     cycleScreens();
 });
+
+// Добавляем обработчик события изменения размера окна
+window.addEventListener('resize', adjustFontSize);

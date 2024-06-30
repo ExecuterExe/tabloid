@@ -118,6 +118,7 @@ html {
 
 .motivation-screen {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -128,28 +129,55 @@ html {
     border: 20px solid black;
     box-sizing: border-box;
     padding: 20px;
-    text-align: center;
+}
+
+.motivation-logo {
+    width: 20%;
+    height: auto;
+    margin-bottom: 30px;
+    max-height: 25vh;
+    object-fit: contain;
 }
 
 .motivation-text {
+    font-size: 6vw;
+    line-height: 1.3;
+    text-align: center;
     max-width: 80%;
-    font-size: 5vw;
-    /* Адаптивный размер шрифта */
-    line-height: 1.4;
-    /* Увеличенный межстрочный интервал */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+    .motivation-logo {
+        width: 30%;
+    }
+
     .motivation-text {
-        font-size: 6vw;
-        /* Больший шрифт для маленьких экранов */
+        font-size: 5.5vw;
+        max-width: 65%;
     }
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 768px) {
+    .motivation-logo {
+        width: 30%;
+        max-height: 20vh;
+        margin-bottom: 20px;
+    }
+
     .motivation-text {
-        font-size: 58px;
-        /* Фиксированный размер для очень больших экранов */
+        font-size: 7vw;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .motivation-logo {
+        width: 40%;
+        max-height: 15vh;
+    }
+
+    .motivation-text {
+        font-size: 8vw;
     }
 }
 
