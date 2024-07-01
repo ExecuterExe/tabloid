@@ -351,3 +351,75 @@ html {
         background-color: #2c2c2c;
     }
 }
+
+@media (max-width: 1290px) and (max-height: 1030px) {
+    .up_part {
+        padding: 12px;
+        /* Увеличили padding */
+    }
+
+    .up_time {
+        font-size: 22px;
+        /* Немного увеличили размер шрифта */
+    }
+
+    .time {
+        font-size: 28px;
+        /* Немного увеличили размер шрифта */
+    }
+
+    .time_text {
+        font-size: 16px;
+        /* Немного увеличили размер шрифта */
+    }
+
+    .title {
+        font-size: 32px;
+        /* Немного увеличили размер шрифта */
+        padding: 5px 0;
+        /* Увеличили вертикальный padding */
+    }
+
+    /* Увеличиваем размер и высоту заголовков таблицы */
+    .head_tablo {
+        font-size: 16px;
+        /* Увеличили размер шрифта */
+        padding: 3px;
+        height: 24px;
+        /* Увеличили высоту */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .item {
+        font-size: 20px;
+        padding: 2px;
+        min-height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .grid_tabloid {
+        grid-template-rows: 24px repeat(9, minmax(28px, 1fr));
+        /* Увеличили высоту первой строки */
+        height: calc(100vh - 70px);
+        /* Немного уменьшили общую высоту, чтобы компенсировать увеличение up_part */
+        gap: 1px;
+    }
+
+    .subject,
+    .time_rais,
+    .status {
+        font-size: 25px;
+    }
+}
+
+.motivation-logo {
+    width: auto;
+    height: calc(25vh + 325px);
+    max-width: calc(20% + 325px);
+    object-fit: contain;
+    /* Это гарантирует, что изображение полностью поместится в контейнер */
+}
