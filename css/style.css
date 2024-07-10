@@ -26,7 +26,6 @@ html {
     align-items: center;
     padding: 10px;
     background-color: #000;
-    /* Можно добавить цвет фона */
 }
 
 .up_time {
@@ -63,21 +62,16 @@ html {
     display: grid;
     grid-template-columns: 7vw 10vw 38vw 25vw 20vw;
     grid-template-rows: repeat(9, 1fr);
-    /* Изменено с 10 на 9 */
     width: 100%;
     height: calc(100vh - 100px);
-    /* Высота минус верхняя часть *
-    overflow-y: auto;
-    /* Вертикальная прокрутка, если нужно */
+
 }
 
 .item {
     text-align: center;
     font-size: 30px;
     padding: 10px;
-    /* Увеличиваем отступы вокруг текста */
     border-bottom: 1px solid #ccc;
-    /* Однотонная горизонтальная линия внизу */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,18 +81,14 @@ html {
     background-color: #1a1a1a;
     color: #ffffff;
     text-align: center;
-    /* Белый цвет текста для контраста */
     font-size: 32px;
     padding: 10px;
-    /* Увеличиваем отступы вокруг текста */
     border-bottom: 2px solid #ffffff;
-    /* Белая горизонтальная линия внизу */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Цвет фона для нечетных групп строк */
 .grid_tabloid .item:nth-child(10n+1),
 .grid_tabloid .item:nth-child(10n+2),
 .grid_tabloid .item:nth-child(10n+3),
@@ -107,7 +97,6 @@ html {
     background-color: #1a1a1a;
 }
 
-/* Цвет фона для четных групп строк */
 .grid_tabloid .item:nth-child(10n+6),
 .grid_tabloid .item:nth-child(10n+7),
 .grid_tabloid .item:nth-child(10n+8),
@@ -181,7 +170,6 @@ html {
     }
 }
 
-/* Для экранов с небольшой высотой */
 @media (max-height: 800px) {
     .up_part {
         padding: 5px;
@@ -219,7 +207,6 @@ html {
     }
 }
 
-/* Для экранов с небольшой шириной */
 @media (max-width: 1200px) {
     .grid_tabloid {
         grid-template-columns: 7vw 12vw 36vw 25vw 20vw;
@@ -236,7 +223,6 @@ html {
     }
 }
 
-/* Для экранов с небольшой высотой и шириной */
 @media (max-height: 800px) and (max-width: 1200px) {
     .up_part {
         padding: 3px;
@@ -275,7 +261,6 @@ html {
     }
 }
 
-/* Для мобильных устройств */
 @media (max-width: 767px) {
     .wrapper {
         height: auto;
@@ -322,12 +307,10 @@ html {
         border-bottom: 1px solid #444;
     }
 
-    /* Скрываем заголовки столбцов, кроме первого */
     .head_tablo:not(:first-child) {
         display: none;
     }
 
-    /* Отображаем каждую ячейку как отдельную строку */
     .item {
         grid-column: 1 / -1;
         display: flex;
@@ -335,14 +318,12 @@ html {
         align-items: center;
     }
 
-    /* Добавляем подписи к ячейкам */
     .item::before {
         content: attr(data-label);
         font-weight: bold;
         margin-right: 10px;
     }
 
-    /* Стили для чередования цветов строк */
     .grid_tabloid .item:nth-child(odd) {
         background-color: #1a1a1a;
     }
@@ -355,38 +336,29 @@ html {
 @media (max-width: 1290px) and (max-height: 1030px) {
     .up_part {
         padding: 12px;
-        /* Увеличили padding */
     }
 
     .up_time {
         font-size: 22px;
-        /* Немного увеличили размер шрифта */
     }
 
     .time {
         font-size: 28px;
-        /* Немного увеличили размер шрифта */
     }
 
     .time_text {
         font-size: 16px;
-        /* Немного увеличили размер шрифта */
     }
 
     .title {
         font-size: 32px;
-        /* Немного увеличили размер шрифта */
         padding: 5px 0;
-        /* Увеличили вертикальный padding */
     }
 
-    /* Увеличиваем размер и высоту заголовков таблицы */
     .head_tablo {
         font-size: 16px;
-        /* Увеличили размер шрифта */
         padding: 3px;
         height: 24px;
-        /* Увеличили высоту */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -403,9 +375,7 @@ html {
 
     .grid_tabloid {
         grid-template-rows: 24px repeat(9, minmax(28px, 1fr));
-        /* Увеличили высоту первой строки */
         height: calc(100vh - 70px);
-        /* Немного уменьшили общую высоту, чтобы компенсировать увеличение up_part */
         gap: 1px;
     }
 
@@ -421,5 +391,4 @@ html {
     height: calc(25vh + 325px);
     max-width: calc(20% + 325px);
     object-fit: contain;
-    /* Это гарантирует, что изображение полностью поместится в контейнер */
 }

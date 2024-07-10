@@ -138,23 +138,20 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSubjectsAndStatuses();
     }
 
-    // Инициализация
     updateTime();
     updateSubjectsAndStatuses();
 
-    // Обновлять время каждую секунду
     setInterval(updateTime, 1000);
 
     function cycleScreens() {
         setTimeout(showMotivationScreen, 60000);
         setTimeout(() => {
             showOriginalScreen();
-            cycleScreens(); // Повторяем цикл
+            cycleScreens();
         }, 80000);
     }
 
     cycleScreens();
 });
 
-// Добавляем обработчик события изменения размера окна
 window.addEventListener('resize', adjustFontSize);
